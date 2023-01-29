@@ -6,8 +6,6 @@ router.get('/', async (req, res) => {
     try {
         const scores = await userModel.find();
         return res.status(200).json({
-            title: "Express Testing",
-            message: "The app is working properly!",
             scores: scores
         });
     } catch (error) {

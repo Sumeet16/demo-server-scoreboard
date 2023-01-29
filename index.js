@@ -1,7 +1,7 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
-const connectToDB = require("./db/conn");
+require("./db/conn");
 
 // middlewares
 const app = express();
@@ -23,7 +23,6 @@ app.use('/',require('./routes/updateScore'))
 
 // defining port
 
-connectToDB();
 const PORT = process.env.PORT || 3001;
 
 
