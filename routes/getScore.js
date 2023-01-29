@@ -5,9 +5,9 @@ const userModel = require("../model/user.model");
 router.get('/getScore', async (req, res) => {
     try {
         const scores = await userModel.find();
-        res.json({ message: "All scores are sent! 🟢", scores: scores })
+        return res.json({ message: "All scores are sent! 🟢", scores: scores })
     } catch (error) {
-        res
+        return res
             .status(401)
             .json({ message: "Some error occurred while fetching scores! 🔴" });
     }

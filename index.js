@@ -5,7 +5,18 @@ const connectToDB = require("./db/conn");
 
 // middlewares
 const app = express();
-app.use(cors());
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+app.use(cors({
+  origin: ["http://localhost:3000", "http://localhost:5173", "*"],
+  methods: ["GET", "POST"],
+  credentials: true
+}))
+
 app.use(express.json());
 app.use('/',require('./routes/getScore'))
 app.use('/',require('./routes/updateScore'))
@@ -13,6 +24,8 @@ app.use('/',require('./routes/updateScore'))
 // defining port
 
 connectToDB();
+const PORT = process.env.PORT || 3001;
+
 
 // setting up an empty GET Route
 app.get("/", (req, res) => {
@@ -22,7 +35,4 @@ app.get("/", (req, res) => {
 });
 
 // Starting Server on PORT
-app.listen(8080, () => console.log("Server started on PORT Number: " + 8080 + " 🟢"));
-
-// export main module
-module.exports = app
+app.listen(PORT, () => console.log('Server started on PORT Number: ' + PORT))

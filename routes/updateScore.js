@@ -8,9 +8,9 @@ router.post('/updateScore', async (req, res) => {
 
     try {
         const Scores = await userModel.findOneAndUpdate({team: name}, { $set: {"win": currentScoreWin, "lose": currentScoreLose, "point": totalScore}}, {new: true} );
-        res.json({message: "Scores is updated! 🟢", score: Scores})
+        return res.json({message: "Scores is updated! 🟢", score: Scores})
     } catch (error) {
-        res
+        return res
         .status(401)
         .json({ message: "Some error occurred while updating the score! 🔴" });
     }
