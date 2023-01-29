@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const userModel = require("../model/user.model");
 
-router.get('/getScore', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const scores = await userModel.find();
         return res.json({ message: "All scores are sent! 🟢", scores: scores })

@@ -18,7 +18,7 @@ app.use(cors({
 }))
 
 app.use(express.json());
-app.use('/',require('./routes/getScore'))
+app.use('/getScore',require('./routes/getScore'))
 app.use('/',require('./routes/updateScore'))
 
 // defining port
