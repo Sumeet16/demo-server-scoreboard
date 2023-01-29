@@ -7,8 +7,8 @@ const connectToDB = require("./db/conn");
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(require("./routes/getScore"));
-app.use(require("./routes/updateScore"));
+app.use('/',require('./routes/getScore'))
+app.use('/',require('./routes/updateScore'))
 
 // defining port
 
